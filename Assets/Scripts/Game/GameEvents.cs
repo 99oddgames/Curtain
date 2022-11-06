@@ -29,7 +29,7 @@ namespace NounEvents
         public GameObject Target;
 
         public Vector3 Direction;
-        public float Strength;
+        public float Impulse;
         public EAttackType Type;
     }
 }

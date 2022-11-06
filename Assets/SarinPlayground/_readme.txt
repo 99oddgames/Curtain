@@ -1,0 +1,1 @@
+keep temporary assets and quick tests to this folder
