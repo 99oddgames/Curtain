@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5991101d13d5cb648b9dc71b4d26050d, type: 3}
-  m_Name: VerbAttack
+  m_Name: VerbPunch
   m_EditorClassIdentifier: 
   Type: 0
   Impulse: 10
