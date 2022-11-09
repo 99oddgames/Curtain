@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5991101d13d5cb648b9dc71b4d26050d, type: 3}
-  m_Name: VerbPunch
+  m_Script: {fileID: 11500000, guid: ccf66e59fb80b3f46b9e04af6c4a0fc4, type: 3}
+  m_Name: ObjectPoolConfig
   m_EditorClassIdentifier: 
-  WordType: 1
-  Text: Punch
-  Type: 0
-  Impulse: 10
-  StoppingDistance: 1
-  Duration:
-    Min: 0.33
-    Max: 0.33
-    UseScaledTime: 1
+  PrewarmObjects: []

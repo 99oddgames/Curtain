@@ -15,4 +15,9 @@ public class UIEntryPoint : MonoBehaviour
             RootCanvas = rootCanvas
         });
     }
+
+    public void AddWord()
+    {
+
+    }
 }
