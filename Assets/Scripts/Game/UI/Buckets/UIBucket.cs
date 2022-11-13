@@ -19,8 +19,14 @@ public class UIBucket<T> : MonoBehaviour, IDragAndDropBucket<T> where T : IBucke
     private RectTransform rect;
 
     public bool Contains(T item) => items.Contains(item);
+    public List<T> Items => items;
 
     void Update()
+    {
+        UpdatePositions(Time.deltaTime);
+    }
+
+    private void UpdatePositions(float dt)
     {
         var pos = LocalPivot.localPosition; //bypass ugui size math being stupid for stretched rects
 
@@ -35,7 +41,7 @@ public class UIBucket<T> : MonoBehaviour, IDragAndDropBucket<T> where T : IBucke
             pos += insertSpace;
 
             var desiredPos = pos + new Vector3(LeftPadding, -TopPadding) + new Vector3(offsetX * 0.5f, offsetY * 0.5f);
-            rect.localPosition = Vector3.Lerp(rect.localPosition, desiredPos, Time.deltaTime * 18f);
+            rect.localPosition = Vector3.Lerp(rect.localPosition, desiredPos, dt * 18f);
 
             pos += new Vector3(offsetX, offsetY);
         }
@@ -79,7 +85,7 @@ public class UIBucket<T> : MonoBehaviour, IDragAndDropBucket<T> where T : IBucke
         items.Remove(item);
     }
 
-    public void AddItem(T item, int index = -1)
+    public void AddItem(T item, int index = -1, bool snapPositions = false)
     {
         if (index >= 0)
         {
@@ -91,6 +97,11 @@ public class UIBucket<T> : MonoBehaviour, IDragAndDropBucket<T> where T : IBucke
         }
 
         item.Rect.SetParent(transform);
+
+        if (!snapPositions)
+            return;
+
+        UpdatePositions(1f);
     }
 
     public void RemoveItem(T item)

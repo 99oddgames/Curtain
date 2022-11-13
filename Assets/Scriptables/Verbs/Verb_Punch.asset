@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5991101d13d5cb648b9dc71b4d26050d, type: 3}
+  m_Name: Verb_Punch
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  Text: Punch
+  BackgroundColor: {r: 1, g: 0.70030475, b: 0.18396229, a: 1}
+  Type: 0
+  Impulse: 10
+  StoppingDistance: 0.33
+  Duration:
+    Min: 0.33
+    Max: 0.33
+    UseScaledTime: 1

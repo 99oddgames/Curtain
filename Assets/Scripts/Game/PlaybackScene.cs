@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlaybackScene : MonoBehaviour
 {
-    public NounObject[] GetNounObjects()
+    public WordObject[] GetNounObjects()
     {
-        return GetComponentsInChildren<NounObject>();
+        return GetComponentsInChildren<WordObject>();
     }
 }

@@ -1,8 +1,14 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class UIWordWidget : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IBucketItem
+public class UIWordWidget : PoolableObject, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IBucketItem
 {
+    public WordDefinition WordDefinition;
+    public TextMeshProUGUI Label;
+    public Graphic Background;
+
     public Vector2 Size => Rect.sizeDelta;
     public RectTransform Rect => rect == null ? rect = GetComponent<RectTransform>() : rect;
     private RectTransform rect;
@@ -12,13 +18,14 @@ public class UIWordWidget : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     private IDragAndDropBucket<UIWordWidget> hoveredBucket;
     private IDragAndDropBucket<UIWordWidget> sourceBucket;
 
-    void Awake()
+    public void Initialize(WordDefinition wordDefinition, GameEntryPoint.UIInitData initData)
     {
-        EventBetter.Listen<UIWordWidget, UIEvents.UIInitialize>(this, msg =>
-        {
-            buckets = msg.WordBuckets;
-            rootRect = (RectTransform)msg.RootCanvas.transform;
-        });
+        WordDefinition = wordDefinition;
+        Label.text = wordDefinition.Text;
+        Background.color = wordDefinition.BackgroundColor;
+
+        buckets = new IDragAndDropBucket<UIWordWidget>[] { initData.StoryBucket, initData.ToolboxBucket };
+        rootRect = (RectTransform)initData.RootCanvas.transform;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

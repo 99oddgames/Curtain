@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "VerbAttack", menuName = "Verbs/Attack")]
 public class VerbAttack : VerbDefinition
 {
+    [Header("Gameplay")]
     public NounEvents.Attack.EAttackType Type;
     public float Impulse;
     public float StoppingDistance = 1f;
@@ -13,6 +14,13 @@ public class VerbAttack : VerbDefinition
 
     public override void StartAction(ref VerbState state)
     {
+        if(state.Target == null)
+        {
+            Debug.Log("Attack with no target not implemented");
+            state.IsDone = true;
+            return;
+        }
+
         Duration.Next();
 
         movementDirection = (state.Target.transform.position - state.Actor.transform.position).normalized;
@@ -34,7 +42,7 @@ public class VerbAttack : VerbDefinition
         EventBetter.Raise(new NounEvents.Attack()
         {
             Type = Type,
-            Target = state.Target,
+            Target = state.Target.gameObject,
             Direction = movementDirection,
             Impulse = Impulse,
         });
